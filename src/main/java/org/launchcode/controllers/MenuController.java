@@ -7,8 +7,12 @@ import org.launchcode.models.data.MenuDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("menu")
@@ -24,7 +28,7 @@ public class MenuController {
     @RequestMapping(value = "")
     public String index(Model model){
 
-        model.addAttribute("Menus", menuDao.findAll());
+        model.addAttribute("menus", menuDao.findAll());
         model.addAttribute("title", "Menus" );
         return "menu/index";
     }
@@ -35,5 +39,16 @@ public class MenuController {
         model.addAttribute(new Menu());
         model.addAttribute("title", "Add New Menu");
         return "menu/add";
+    }
+
+    @RequestMapping(value="add", method = RequestMethod.POST)
+    public String processAddForm(Model model, @ModelAttribute @Valid Menu menu, Errors errors){
+        if(errors.hasErrors()){
+            model.addAttribute(new Menu());
+            model.addAttribute("title", "Add New Menu");
+            return "menu/add";
+        }
+        menuDao.save(menu);
+        return "redirect:";
     }
 }
