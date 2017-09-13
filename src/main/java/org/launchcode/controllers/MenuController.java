@@ -33,7 +33,7 @@ public class MenuController {
     public String add(Model model){
 
         model.addAttribute(new Menu());
-        model.addAttribute("title", "Menus");
+        model.addAttribute("title", "Add New Menu");
         return "menu/add";
     }
 }
