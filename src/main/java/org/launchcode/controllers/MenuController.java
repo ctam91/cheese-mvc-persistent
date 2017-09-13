@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -50,5 +51,12 @@ public class MenuController {
         }
         menuDao.save(menu);
         return "redirect:";
+    }
+
+    @RequestMapping(value="view/{id}", method = RequestMethod.GET)
+    public String viewMenu(Model model, @Valid @PathVariable int id){
+        Menu theMenu = menuDao.findOne(id);
+        model.addAttribute("menu", theMenu);
+        return "menu/view";
     }
 }
