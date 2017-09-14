@@ -77,18 +77,13 @@ public class MenuController {
     public String addItem(Model model, @ModelAttribute @Valid AddMenuItemForm form, Errors errors){
 
         if(errors.hasErrors()){
-            System.out.println("This has errors. Fix it Tammy");
             model.addAttribute("form", form);
             return "menu/add-item";
         }
-        System.out.println("I think it worked");
         Cheese theCheese = cheeseDao.findOne(form.getCheeseId());
-        System.out.println("we found the cheese");
         Menu theMenu = menuDao.findOne(form.getMenuId());
-        System.out.println("we found the menu");
         theMenu.addItem(theCheese);
         menuDao.save(theMenu);
-        System.out.println("The menu was saved");
 
         return "redirect:/menu/view/"+ theMenu.getId();
     }
