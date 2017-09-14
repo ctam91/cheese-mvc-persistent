@@ -4,7 +4,28 @@
     <meta charset="UTF-8"/>
     <title></title>
 </head>
-<body>
+<body class="container">
 
+<h1 th:text="${title}"></h1>
+
+    <form method="post" th:object="${form}" action="/menu/add-item">
+
+        <div class="form-group">
+            <label th:for="cheeseId">Cheese</label>
+            <select name="cheeseId">
+                <option th:each="cheese: *{cheeses}"
+                        th:text="${cheese.name}"
+                        th:value="${cheese.id}"></option>
+            </select>
+            <div th:errors="*{cheeseId}" class="error"></div>
+
+            <!-- Is it menu.id? -->
+        </div>
+
+        <input type="hidden" name="menuId" th:value="*{menu.id}" />
+
+        <input type="submit" value="Add Item" />
+
+    </form>
 </body>
 </html>
