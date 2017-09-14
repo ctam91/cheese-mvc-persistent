@@ -6,9 +6,9 @@
 
 <body class="container">
 
-<nav th:replace="fragments :: navigation"></nav>
-
 <h1 th:text="${menu.name}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
 
 <p th:unless="${cheeses.size()}">No Cheeses yet</p>
 <!--  Display a list of menu items (cheeses) -->
