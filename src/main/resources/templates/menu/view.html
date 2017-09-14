@@ -4,7 +4,10 @@
     <meta charset="UTF-8"/>
 </head>
 
-<body>
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
 <h1 th:text="${menu.name}">Default Title</h1>
 
 <p th:unless="${cheeses.size()}">No Cheeses yet</p>

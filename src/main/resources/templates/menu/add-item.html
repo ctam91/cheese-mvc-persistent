@@ -8,6 +8,8 @@
 
 <h1 th:text="${title}"></h1>
 
+<nav th:replace="fragments :: navigation"></nav>
+
     <form method="post" th:object="${form}" action="/menu/add-item">
 
         <div class="form-group">
