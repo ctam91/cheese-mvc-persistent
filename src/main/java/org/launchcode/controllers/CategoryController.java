@@ -41,7 +41,6 @@ public class CategoryController {
     public String processAddCheese(@ModelAttribute @Valid Category category, Errors errors, Model model){
 
         if(errors.hasErrors()){
-            model.addAttribute(new Category());
             model.addAttribute("title", "Add Category");
             return "category/add";
         }
