@@ -2,8 +2,10 @@ package org.launchcode.controllers;
 
 import org.launchcode.models.Category;
 import org.launchcode.models.Cheese;
+import org.launchcode.models.Menu;
 import org.launchcode.models.data.CategoryDao;
 import org.launchcode.models.data.CheeseDao;
+import org.launchcode.models.data.MenuDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by LaunchCode
@@ -27,6 +31,9 @@ public class CheeseController {
 
     @Autowired
     private CategoryDao categoryDao;
+
+    @Autowired
+    private MenuDao menuDao;
 
     // Request path: /cheese
     @RequestMapping(value = "")
@@ -71,12 +78,26 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.POST)
-    public String processRemoveCheeseForm(@RequestParam int[] cheeseIds) {
+    public String processRemoveCheeseForm(@RequestParam int[] cheeseIds, Model model) {
+        //find the cheese to remove first
+        //remove a cheese from the menu
+        // remove cheese from db
 
-        for (int cheeseId : cheeseIds) {
-            cheeseDao.delete(cheeseId);
+
+//       for (int cheeseId : cheeseIds) {
+//           cheeseDao.delete(cheeseId);
+//        }
+        try{
+            for(int cheeseId : cheeseIds) {
+                cheeseDao.delete(cheeseId);
+            }
+        } catch (Exception e){
+            model.addAttribute("cheeses", cheeseDao.findAll());
+            model.addAttribute("title", "Remove Cheese");
+            model.addAttribute("removeError", "Please delete cheese from all menus before removing it");
+            return "cheese/remove";
+
         }
-
         return "redirect:";
     }
 

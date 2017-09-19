@@ -1,8 +1,11 @@
 package org.launchcode.models;
 
+import org.launchcode.models.data.CheeseDao;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,4 +52,10 @@ public class Menu {
     public void addItem(Cheese item){
         cheeses.add(item);
     }
+
+    public void deleteCheese(int cheeseId){
+        cheeses.remove(cheeseId);
+    }
+
+
 }
