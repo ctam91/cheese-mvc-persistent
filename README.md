@@ -15,10 +15,13 @@ The app must meet several requirements:
 
 ## User Scenarios
 * User goes to the homepage and views a list of cheeses stored in database.
-![Alt text](src/main/resources/img/add_cheese.jpg?raw=true "Optional Title")
-* User enters a new cheese into the database and is redirected to the homepage
-* User creates a new category and can add cheeses to the category.
+![Alt text](src/main/resources/img/cheeses.jpg?raw=true "Homepage")
+* User can add a new cheese into the database.
+![Alt text](src/main/resources/img/add_cheese.jpg?raw=true "Add cheese form")
+* User can view all current cheese categories and create a new category.
+![Alt text](src/main/resources/img/categories.jpg?raw=true "Categories")
 * User creates a new menu and can add cheeses to the menu. 
+![Alt text](src/main/resources/img/menus.jpg?raw=true "Menus")
 
 ## Routes
 * **"/cheese"** - GET: Display list of all cheeses.
