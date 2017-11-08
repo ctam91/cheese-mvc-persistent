@@ -14,9 +14,11 @@ The app must meet several requirements:
 * Include a menu bar with available commands
 
 ## User Scenarios
-* User enters a username that is stored in the database with the correct password and is redirected to the /newpost page with their username being stored in a session
-* User enters a username that is stored in the database with an incorrect password and is redirected to the /login page with a message that their password is incorrect
-* User tries to login with a username that is not stored in the database and is redirected to the /login page with a message that this username does not exist 
+* User goes to the homepage and views a list of cheeses stored in database.
+![Alt text](src/main/resources/img/add_cheese.jpg?raw=true "Optional Title")
+* User enters a new cheese into the database and is redirected to the homepage
+* User creates a new category and can add cheeses to the category.
+* User creates a new menu and can add cheeses to the menu. 
 
 ## Routes
 * **"/cheese"** - GET: Display list of all cheeses.
